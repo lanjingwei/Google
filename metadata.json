@@ -1,0 +1,5 @@
+{
+  "name": "Gemini 视频分析器",
+  "description": "一个使用 Gemini Pro 模型分析视频并提取关键信息的应用程序。上传视频，提供提示，即可获得详细分析。",
+  "requestFramePermissions": []
+}
