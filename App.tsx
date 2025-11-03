@@ -3,6 +3,7 @@ import { analyzeVideo } from './services/geminiService';
 import VideoUploader from './components/VideoUploader';
 import AnalysisResult from './components/AnalysisResult';
 import Loader from './components/Loader';
+import PromptSuggestions from './components/PromptSuggestions';
 
 const App: React.FC = () => {
   const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -15,6 +16,10 @@ const App: React.FC = () => {
     setVideoFile(file);
     setAnalysisResult(null);
     setError(null);
+  }, []);
+
+  const handleSuggestionSelect = useCallback((suggestion: string) => {
+    setPrompt(suggestion);
   }, []);
 
   const handleAnalyzeClick = async () => {
@@ -69,6 +74,7 @@ const App: React.FC = () => {
               className="w-full h-24 p-3 bg-gray-900 border border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 resize-none"
               placeholder="例如，这个视频的情感是什么？"
             />
+            <PromptSuggestions onSelectSuggestion={handleSuggestionSelect} />
           </div>
 
           <div className="flex justify-center">
